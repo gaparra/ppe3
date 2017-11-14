@@ -80,11 +80,23 @@ public class Connexion extends javax.swing.JDialog {
             }
         });
 
-        jPassMDP.setDragEnabled(false);
+        jPassMDP.setText("0");
+        jPassMDP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPassMDPActionPerformed(evt);
+            }
+        });
 
         jLabelMDP.setText("Mot de passe");
 
         jLabelIdentifiant.setText("Identifiant");
+
+        jTextFieldIdentifiant.setText("toto");
+        jTextFieldIdentifiant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIdentifiantActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Saisissez vos informations");
@@ -167,28 +179,36 @@ public class Connexion extends javax.swing.JDialog {
                 ResultSet lignesRetournees = requete.executeQuery("select * from Utilisateurs where identifiant='" + identifiant + "' and mot_de_passe='" + mdp + "'");
                 if (lignesRetournees.next()) {
 
-                    Integer id =       lignesRetournees.getInt("id_utilisateur");
-                    String nom =       lignesRetournees.getString("nom");
-                    String prenom =    lignesRetournees.getString("prenom");
+                    Integer id = lignesRetournees.getInt("id_utilisateur");
+                    String nom = lignesRetournees.getString("nom");
+                    String prenom = lignesRetournees.getString("prenom");
                     String naissance = lignesRetournees.getString("annee_naissance");
-                    String rue =       lignesRetournees.getString("adresse_rue");
-                    String cp =        lignesRetournees.getString("adresse_cp");
-                    String ville =     lignesRetournees.getString("adresse_ville");
-                    String perso =     lignesRetournees.getString("tel_personnel");
-                    String pro =       lignesRetournees.getString("tel_professionnel");
-                    String mail =      lignesRetournees.getString("mail");
-                    String embauche =  lignesRetournees.getString("date_embauche");
-                    String role =      lignesRetournees.getString("role");
+                    String rue = lignesRetournees.getString("adresse_rue");
+                    String cp = lignesRetournees.getString("adresse_cp");
+                    String ville = lignesRetournees.getString("adresse_ville");
+                    String perso = lignesRetournees.getString("tel_personnel");
+                    String pro = lignesRetournees.getString("tel_professionnel");
+                    String mail = lignesRetournees.getString("mail");
+                    String embauche = lignesRetournees.getString("date_embauche");
+                    String role = lignesRetournees.getString("role");
                     String categorie = lignesRetournees.getString("categorie");
                     //Modifications de la Mission 2 à placer ici
 
                     String adresse = rue + cp + ville;
 
-                    Personne zuk = new Employe(nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                    if (role.equals("responsable")) {
+                        Personne zuk = new Responsable(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                        this.fenetre.gens = zuk;
+                    }
+                    if (role.equals("directeur")) {
+                        Personne zuk = new Directeur(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                        this.fenetre.gens = zuk;
+                    } else {
+                        Personne zuk = new Employe(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                        this.fenetre.gens = zuk;
+                    }
 
-                    this.fenetre.gens=zuk;
-                    
-                    this.fenetre.connecte(nom, prenom);
+                    this.fenetre.connecte(nom, prenom, role);
                     this.setVisible(false);
                     this.fenetre.majConnexion();
 
@@ -207,6 +227,14 @@ public class Connexion extends javax.swing.JDialog {
         }
 
     }//GEN-LAST:event_jButtonConnecterActionPerformed
+
+    private void jTextFieldIdentifiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdentifiantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdentifiantActionPerformed
+
+    private void jPassMDPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassMDPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPassMDPActionPerformed
 
     /**
      * @param args the command line arguments

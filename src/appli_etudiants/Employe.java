@@ -13,8 +13,8 @@ public class Employe extends Personne {
     private String login;
     private String mot_de_passe;
 
-    public Employe(String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
-        super(nom, prenom, courriel, embauche, adresse, annee_naissance, position, role);
+    public Employe(Integer id, String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
+        super(id, nom, prenom, courriel, embauche, adresse, annee_naissance, position, role);
     }
 
     //accesseurs

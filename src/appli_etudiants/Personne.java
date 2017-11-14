@@ -4,12 +4,22 @@
  */
 package appli_etudiants;
 
+import com.mysql.jdbc.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nc
  */
 public class Personne {
 
+    private Integer id;
     private String nom;
     private String prenom;
     private String courriel;
@@ -19,7 +29,8 @@ public class Personne {
     private String position;
     private String role;
 
-    public Personne(String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
+    public Personne(Integer id, String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.courriel = courriel;
@@ -30,8 +41,21 @@ public class Personne {
         this.role = role;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+
     public String voirPos() {
         return getPosition();
+    }
+
+    public void modifPos(int i) {
+
     }
 
     public String getPosition() {
@@ -43,7 +67,7 @@ public class Personne {
     }
 
     public String getRole() {
-        return role;
+        return this.getClass().getName();
     }
 
     public void setRole(String role) {
@@ -60,6 +84,28 @@ public class Personne {
 
     public void setAnnee_naissance(String annee_naissance) {
         this.annee_naissance = annee_naissance;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            //Chaine de connexion (prise dans l'onglet services)
+            String connexionUrl = "jdbc:mysql://localhost:3333/gsbperso?user=applietudiants&password=sio";
+            
+            //etablissement de la connexion
+            Connection maConnexion = (Connection) DriverManager.getConnection(connexionUrl);
+            
+            //requete
+            Statement requete = maConnexion.createStatement();
+
+            Integer id=this.getId();
+            
+          requete.executeUpdate("update utilisateurs set annee_naissance ='"+annee_naissance+"'where id_utilisateur="+id+";");
+
+            
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Responsable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Responsable.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void setNom(String nom) {

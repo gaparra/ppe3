@@ -13,14 +13,14 @@ public class Directeur extends Employe {
 
     private String poste;
 
-    public Directeur(String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
-        super(nom, prenom, courriel, embauche, adresse, annee_naissance, position, role);
+    public Directeur(Integer id, String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
+        super(id, nom, prenom, courriel, embauche, adresse, annee_naissance, position, role);
         this.poste = "Directeur";
 
     }
 
-    public void creer(String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
-        Employe nouveau = new Employe(nom, prenom, courriel, embauche, adresse, annee_naissance, position, role);
+    public void creer(Integer id, String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
+        Employe nouveau = new Employe(id, nom, prenom, courriel, embauche, adresse, annee_naissance, position, role);
 
     }
 
