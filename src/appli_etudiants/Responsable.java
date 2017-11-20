@@ -29,8 +29,8 @@ public class Responsable extends Employe {
     }
 
     @Override
-    public void modifPos(int i) {
-        try {
+    public void modifPos(int i, String nom, String prenom, String role) {
+         try {
             Class.forName("com.mysql.jdbc.Driver");
             //Chaine de connexion (prise dans l'onglet services)
             String connexionUrl = "jdbc:mysql://localhost:3333/gsbperso?user=applietudiants&password=sio";
@@ -40,6 +40,10 @@ public class Responsable extends Employe {
             
             //requete
             Statement requete = maConnexion.createStatement();
+
+            Integer id=this.getId();
+            
+          requete.executeUpdate("update utilisateurs set role ='"+role+"'where nom="+nom+"and prenom="+prenom);
 
             
             

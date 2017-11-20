@@ -183,9 +183,6 @@ public class Connexion extends javax.swing.JDialog {
                     String nom = lignesRetournees.getString("nom");
                     String prenom = lignesRetournees.getString("prenom");
                     String naissance = lignesRetournees.getString("annee_naissance");
-                    String rue = lignesRetournees.getString("adresse_rue");
-                    String cp = lignesRetournees.getString("adresse_cp");
-                    String ville = lignesRetournees.getString("adresse_ville");
                     String perso = lignesRetournees.getString("tel_personnel");
                     String pro = lignesRetournees.getString("tel_professionnel");
                     String mail = lignesRetournees.getString("mail");
@@ -193,25 +190,31 @@ public class Connexion extends javax.swing.JDialog {
                     String role = lignesRetournees.getString("role");
                     String categorie = lignesRetournees.getString("categorie");
                     //Modifications de la Mission 2 à placer ici
+//                    System.out.println("select * from adresse where id_utilisateur='" + id + "'");
+                    ResultSet lignesRetourneesAdresse = requete.executeQuery("select * from adresse where id_utilisateur='" + id + "'");
 
-                    String adresse = rue + cp + ville;
+                    if (lignesRetourneesAdresse.next()) {
+                        String rue = lignesRetourneesAdresse.getString("rue");
+                        String cp = lignesRetourneesAdresse.getString("code_postal");
+                        String ville = lignesRetourneesAdresse.getString("ville");
+                        String adresse = rue + cp + ville;
 
-                    if (role.equals("responsable")) {
-                        Personne zuk = new Responsable(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
-                        this.fenetre.gens = zuk;
+                        if (role.equals("responsable")) {
+                            Personne zuk = new Responsable(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                            this.fenetre.gens = zuk;
+                        } else if (role.equals("directeur")) {
+                            Personne zuk = new Directeur(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                            this.fenetre.gens = zuk;
+                        } else {
+                            Personne zuk = new Employe(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                            this.fenetre.gens = zuk;
+                        }
+
+                        this.fenetre.connecte(nom, prenom, role);
+                        this.setVisible(false);
+                        this.fenetre.majConnexion();
+
                     }
-                    if (role.equals("directeur")) {
-                        Personne zuk = new Directeur(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
-                        this.fenetre.gens = zuk;
-                    } else {
-                        Personne zuk = new Employe(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
-                        this.fenetre.gens = zuk;
-                    }
-
-                    this.fenetre.connecte(nom, prenom, role);
-                    this.setVisible(false);
-                    this.fenetre.majConnexion();
-
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "identifiant ou mot de passe incorrect");
                 };

@@ -16,7 +16,6 @@ public class InterfaceGraphique extends javax.swing.JFrame {
      * attribut qui indique si l'etudiant est connecté ou non
      */
     private boolean connecte;
-    private Employe infoEtudiant;
     public Personne gens;
 
     /**
@@ -24,6 +23,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
      */
     private Connexion fenConnexion;
     private Deconnexion fenDeconnexion;
+    private ModifRole fenModifRole;
 
     /**
      * constructeur : Creates new form InterfaceGraphique
@@ -53,17 +53,21 @@ public class InterfaceGraphique extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanelDirecteur = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jButtonPosDir = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jPanelResponsable = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
+        jTextPosRes = new javax.swing.JTextField();
+        jButtonPosDir1 = new javax.swing.JButton();
         jPanelEmploye = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
+        jTextPosEmp = new javax.swing.JTextField();
+        jButtonPosEmp = new javax.swing.JButton();
+        jTextTelProEmp = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jTextTelProEmp1 = new javax.swing.JTextField();
+        jPanelBase = new javax.swing.JPanel();
         nomMenuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         connexionMenuItem = new javax.swing.JMenuItem();
@@ -82,10 +86,10 @@ public class InterfaceGraphique extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Voir pos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPosDir.setText("Voir pos");
+        jButtonPosDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonPosDirActionPerformed(evt);
             }
         });
 
@@ -116,7 +120,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButton1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jButtonPosDir, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(287, 287, 287)
                 .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -128,7 +132,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
             .add(jPanelDirecteurLayout.createSequentialGroup()
                 .add(72, 72, 72)
                 .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton1)
+                    .add(jButtonPosDir)
                     .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(26, 26, 26)
                 .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -137,16 +141,16 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                 .addContainerGap(399, Short.MAX_VALUE))
         );
 
-        jButton3.setText("Voir pos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jTextPosRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jTextPosResActionPerformed(evt);
             }
         });
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPosDir1.setText("Voir pos");
+        jButtonPosDir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                jButtonPosDir1ActionPerformed(evt);
             }
         });
 
@@ -155,10 +159,10 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         jPanelResponsableLayout.setHorizontalGroup(
             jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelResponsableLayout.createSequentialGroup()
-                .add(51, 51, 51)
-                .add(jButton3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(115, 115, 115)
-                .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(45, 45, 45)
+                .add(jButtonPosDir1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(121, 121, 121)
+                .add(jTextPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(268, Short.MAX_VALUE))
         );
         jPanelResponsableLayout.setVerticalGroup(
@@ -166,45 +170,70 @@ public class InterfaceGraphique extends javax.swing.JFrame {
             .add(jPanelResponsableLayout.createSequentialGroup()
                 .add(102, 102, 102)
                 .add(jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton3)
-                    .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(jTextPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButtonPosDir1))
                 .addContainerGap(418, Short.MAX_VALUE))
         );
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Modifier tel pro ");
 
-        jButton5.setText("jButton5");
+        jButtonPosEmp.setText("Voir pos");
+        jButtonPosEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPosEmpActionPerformed(evt);
+            }
+        });
 
-        jTextField4.setText("jTextField4");
+        jTextTelProEmp.setText("Entrer nouveau numéro");
+
+        jButton6.setText("Modifier tel perso ");
+
+        jTextTelProEmp1.setText("Entrer nouveau numéro");
 
         org.jdesktop.layout.GroupLayout jPanelEmployeLayout = new org.jdesktop.layout.GroupLayout(jPanelEmploye);
         jPanelEmploye.setLayout(jPanelEmployeLayout);
         jPanelEmployeLayout.setHorizontalGroup(
             jPanelEmployeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelEmployeLayout.createSequentialGroup()
-                .add(150, 150, 150)
-                .add(jButton4)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEmployeLayout.createSequentialGroup()
-                .addContainerGap(263, Short.MAX_VALUE)
-                .add(jPanelEmployeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEmployeLayout.createSequentialGroup()
-                        .add(jButton5)
-                        .add(169, 169, 169))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEmployeLayout.createSequentialGroup()
-                        .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(236, 236, 236))))
+                .add(23, 23, 23)
+                .add(jPanelEmployeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jButton6, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jButton4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jButtonPosEmp, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(100, 100, 100)
+                .add(jPanelEmployeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jTextTelProEmp)
+                    .add(jTextTelProEmp1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .add(jTextPosEmp))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         jPanelEmployeLayout.setVerticalGroup(
             jPanelEmployeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelEmployeLayout.createSequentialGroup()
-                .add(21, 21, 21)
-                .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(81, 81, 81)
-                .add(jButton4)
-                .add(146, 146, 146)
-                .add(jButton5)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .add(52, 52, 52)
+                .add(jPanelEmployeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonPosEmp)
+                    .add(jTextPosEmp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(44, 44, 44)
+                .add(jPanelEmployeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton4)
+                    .add(jTextTelProEmp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(28, 28, 28)
+                .add(jPanelEmployeLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButton6)
+                    .add(jTextTelProEmp1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(350, Short.MAX_VALUE))
+        );
+
+        org.jdesktop.layout.GroupLayout jPanelBaseLayout = new org.jdesktop.layout.GroupLayout(jPanelBase);
+        jPanelBase.setLayout(jPanelBaseLayout);
+        jPanelBaseLayout.setHorizontalGroup(
+            jPanelBaseLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 995, Short.MAX_VALUE)
+        );
+        jPanelBaseLayout.setVerticalGroup(
+            jPanelBaseLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 543, Short.MAX_VALUE)
         );
 
         fileMenu.setMnemonic('f');
@@ -270,6 +299,10 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                 .add(layout.createSequentialGroup()
                     .add(jPanelEmploye, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(0, 458, Short.MAX_VALUE)))
+            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(layout.createSequentialGroup()
+                    .add(jPanelBase, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(0, 21, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -278,6 +311,8 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                 .add(jPanelResponsable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelEmploye, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelBase, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -309,6 +344,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.fenConnexion = new Connexion(this, true);
 //        this.fenConnexion.setVisible(true);
+        jPanelBase.setVisible(true);
         jPanelDirecteur.setVisible(false);
         jPanelResponsable.setVisible(false);
         jPanelEmploye.setVisible(false);
@@ -316,11 +352,10 @@ public class InterfaceGraphique extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonPosDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosDirActionPerformed
 
         jTextField1.setText(gens.getRole());
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonPosDirActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -336,13 +371,18 @@ public class InterfaceGraphique extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jTextPosResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextPosResActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jTextPosResActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    private void jButtonPosEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosEmpActionPerformed
+        jTextPosEmp.setText(gens.getRole());
+
+    }//GEN-LAST:event_jButtonPosEmpActionPerformed
+
+    private void jButtonPosDir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosDir1ActionPerformed
+        jTextPosRes.setText(gens.getRole());
+    }//GEN-LAST:event_jButtonPosDir1ActionPerformed
     public void connecte(String nom, String prenom, String role) {
         //maj de l'etat de la connexion
         this.connecte = true;
@@ -352,11 +392,14 @@ public class InterfaceGraphique extends javax.swing.JFrame {
 
         if (role.equals("directeur")) {
             jPanelDirecteur.setVisible(true);
-        }
-        if (role.equals("responsable")) {
+//            jPanelEmploye.setVisible(false);
+//            jPanelResponsable.setVisible(false);
+        } else if (role.equals("responsable")) {
             jPanelResponsable.setVisible(true);
         } else {
             jPanelEmploye.setVisible(true);
+//            jPanelDirecteur.setVisible(false);
+//            jPanelResponsable.setVisible(false);
         }
 
     }
@@ -364,6 +407,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     public void deconnecte() {
         this.connecte = false;
         this.nomjMenu.setText(null);
+        jPanelBase.setVisible(true);
         jPanelDirecteur.setVisible(false);
         jPanelResponsable.setVisible(false);
         jPanelEmploye.setVisible(false);
@@ -415,19 +459,23 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private javax.swing.JMenuItem connexionMenuItem;
     private javax.swing.JMenuItem deconnexionMenuItem;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonPosDir;
+    private javax.swing.JButton jButtonPosDir1;
+    private javax.swing.JButton jButtonPosEmp;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanelBase;
     private javax.swing.JPanel jPanelDirecteur;
     private javax.swing.JPanel jPanelEmploye;
     private javax.swing.JPanel jPanelResponsable;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextPosEmp;
+    private javax.swing.JTextField jTextPosRes;
+    private javax.swing.JTextField jTextTelProEmp;
+    private javax.swing.JTextField jTextTelProEmp1;
     private javax.swing.JMenuBar nomMenuBar;
     private javax.swing.JMenu nomjMenu;
     // End of variables declaration//GEN-END:variables
