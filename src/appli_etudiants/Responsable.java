@@ -29,29 +29,20 @@ public class Responsable extends Employe {
     }
 
     @Override
-    public void modifPos(int i, String nom, String prenom, String role) {
+    public String modifPos(int i, String categorie) {
          try {
-            Class.forName("com.mysql.jdbc.Driver");
-            //Chaine de connexion (prise dans l'onglet services)
-            String connexionUrl = "jdbc:mysql://localhost:3333/gsbperso?user=applietudiants&password=sio";
-            
-            //etablissement de la connexion
-            Connection maConnexion = (Connection) DriverManager.getConnection(connexionUrl);
-            
+           Connection maConnexion=ConnexionBDD.getInstance();
             //requete
             Statement requete = maConnexion.createStatement();
-
-            Integer id=this.getId();
-            
-          requete.executeUpdate("update utilisateurs set role ='"+role+"'where nom="+nom+"and prenom="+prenom);
+             
+          requete.executeUpdate("update utilisateurs set categorie ='"+categorie+"'where id_utilisateur="+i);
 
             
             
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Responsable.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Responsable.class.getName()).log(Level.SEVERE, null, ex);
         }
+         return("select nom,prenom,categorie from Utilisateurs where id_utilisateur="+i);
     }
 
     public String getPoste() {

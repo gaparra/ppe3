@@ -52,14 +52,15 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
+        jPanelResponsable = new javax.swing.JPanel();
+        jTextPosRes = new javax.swing.JTextField();
+        jButtonPosDir1 = new javax.swing.JButton();
+        jButtonModifRole = new javax.swing.JButton();
         jPanelDirecteur = new javax.swing.JPanel();
         jButtonPosDir = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
-        jPanelResponsable = new javax.swing.JPanel();
-        jTextPosRes = new javax.swing.JTextField();
-        jButtonPosDir1 = new javax.swing.JButton();
         jPanelEmploye = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jTextPosEmp = new javax.swing.JTextField();
@@ -85,6 +86,52 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+
+        jTextPosRes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextPosResActionPerformed(evt);
+            }
+        });
+
+        jButtonPosDir1.setText("Voir pos");
+        jButtonPosDir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPosDir1ActionPerformed(evt);
+            }
+        });
+
+        jButtonModifRole.setText("Modifier role");
+        jButtonModifRole.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModifRoleActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanelResponsableLayout = new org.jdesktop.layout.GroupLayout(jPanelResponsable);
+        jPanelResponsable.setLayout(jPanelResponsableLayout);
+        jPanelResponsableLayout.setHorizontalGroup(
+            jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelResponsableLayout.createSequentialGroup()
+                .add(45, 45, 45)
+                .add(jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jButtonModifRole)
+                    .add(jPanelResponsableLayout.createSequentialGroup()
+                        .add(jButtonPosDir1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(121, 121, 121)
+                        .add(jTextPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(268, Short.MAX_VALUE))
+        );
+        jPanelResponsableLayout.setVerticalGroup(
+            jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanelResponsableLayout.createSequentialGroup()
+                .add(102, 102, 102)
+                .add(jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jTextPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jButtonPosDir1))
+                .add(95, 95, 95)
+                .add(jButtonModifRole)
+                .addContainerGap(300, Short.MAX_VALUE))
+        );
 
         jButtonPosDir.setText("Voir pos");
         jButtonPosDir.addActionListener(new java.awt.event.ActionListener() {
@@ -139,40 +186,6 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                     .add(jButton2)
                     .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(399, Short.MAX_VALUE))
-        );
-
-        jTextPosRes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextPosResActionPerformed(evt);
-            }
-        });
-
-        jButtonPosDir1.setText("Voir pos");
-        jButtonPosDir1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPosDir1ActionPerformed(evt);
-            }
-        });
-
-        org.jdesktop.layout.GroupLayout jPanelResponsableLayout = new org.jdesktop.layout.GroupLayout(jPanelResponsable);
-        jPanelResponsable.setLayout(jPanelResponsableLayout);
-        jPanelResponsableLayout.setHorizontalGroup(
-            jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelResponsableLayout.createSequentialGroup()
-                .add(45, 45, 45)
-                .add(jButtonPosDir1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(121, 121, 121)
-                .add(jTextPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(268, Short.MAX_VALUE))
-        );
-        jPanelResponsableLayout.setVerticalGroup(
-            jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelResponsableLayout.createSequentialGroup()
-                .add(102, 102, 102)
-                .add(jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jTextPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButtonPosDir1))
-                .addContainerGap(418, Short.MAX_VALUE))
         );
 
         jButton4.setText("Modifier tel pro ");
@@ -383,6 +396,15 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private void jButtonPosDir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosDir1ActionPerformed
         jTextPosRes.setText(gens.getRole());
     }//GEN-LAST:event_jButtonPosDir1ActionPerformed
+
+    private void jButtonModifRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifRoleActionPerformed
+
+        fenModifRole = new ModifRole(this, true);
+        fenModifRole.AjoutInfo(gens);
+        this.fenModifRole.setVisible(true);
+        
+
+    }//GEN-LAST:event_jButtonModifRoleActionPerformed
     public void connecte(String nom, String prenom, String role) {
         //maj de l'etat de la connexion
         this.connecte = true;
@@ -462,6 +484,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonModifRole;
     private javax.swing.JButton jButtonPosDir;
     private javax.swing.JButton jButtonPosDir1;
     private javax.swing.JButton jButtonPosEmp;

@@ -56,6 +56,9 @@ public class Connexion extends javax.swing.JDialog {
         jLabelIdentifiant = new javax.swing.JLabel();
         jTextFieldIdentifiant = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jButtonEmploye = new javax.swing.JButton();
+        jButtonResponsable = new javax.swing.JButton();
+        jButtonDirecteur = new javax.swing.JButton();
 
         org.jdesktop.layout.GroupLayout jDialog1Layout = new org.jdesktop.layout.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -80,7 +83,6 @@ public class Connexion extends javax.swing.JDialog {
             }
         });
 
-        jPassMDP.setText("0");
         jPassMDP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPassMDPActionPerformed(evt);
@@ -91,7 +93,6 @@ public class Connexion extends javax.swing.JDialog {
 
         jLabelIdentifiant.setText("Identifiant");
 
-        jTextFieldIdentifiant.setText("toto");
         jTextFieldIdentifiant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldIdentifiantActionPerformed(evt);
@@ -101,28 +102,52 @@ public class Connexion extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Saisissez vos informations");
 
+        jButtonEmploye.setText("Employe");
+        jButtonEmploye.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmployeActionPerformed(evt);
+            }
+        });
+
+        jButtonResponsable.setText("Responsable");
+        jButtonResponsable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonResponsableActionPerformed(evt);
+            }
+        });
+
+        jButtonDirecteur.setText("Directeur");
+        jButtonDirecteur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDirecteurActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap(82, Short.MAX_VALUE)
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(jButtonDirecteur, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jButtonEmploye, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jButtonResponsable, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 6, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                    .add(jLabel1)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                         .add(jButtonConnecter)
-                        .add(123, 123, 123))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel1)
-                            .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabelIdentifiant)
-                                    .add(jLabelMDP))
-                                .add(18, 18, 18)
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                    .add(jTextFieldIdentifiant)
-                                    .add(jPassMDP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))))
-                        .add(59, 59, 59))))
+                        .add(layout.createSequentialGroup()
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(jLabelIdentifiant)
+                                .add(jLabelMDP))
+                            .add(18, 18, 18)
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                .add(jTextFieldIdentifiant)
+                                .add(jPassMDP, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)))))
+                .add(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -137,9 +162,15 @@ public class Connexion extends javax.swing.JDialog {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jPassMDP, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabelMDP))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
-                .add(jButtonConnecter)
-                .add(24, 24, 24))
+                .add(25, 25, 25)
+                .add(jButtonEmploye)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jButtonConnecter)
+                    .add(jButtonResponsable))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jButtonDirecteur)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -239,6 +270,21 @@ public class Connexion extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPassMDPActionPerformed
 
+    private void jButtonEmployeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmployeActionPerformed
+        jTextFieldIdentifiant.setText("toto");
+        jPassMDP.setText("0");
+    }//GEN-LAST:event_jButtonEmployeActionPerformed
+
+    private void jButtonResponsableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonResponsableActionPerformed
+        jTextFieldIdentifiant.setText("qsdf");
+        jPassMDP.setText("qsdf");
+    }//GEN-LAST:event_jButtonResponsableActionPerformed
+
+    private void jButtonDirecteurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDirecteurActionPerformed
+        jTextFieldIdentifiant.setText("azer");
+        jPassMDP.setText("azer");
+    }//GEN-LAST:event_jButtonDirecteurActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,6 +328,9 @@ public class Connexion extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConnecter;
+    private javax.swing.JButton jButtonDirecteur;
+    private javax.swing.JButton jButtonEmploye;
+    private javax.swing.JButton jButtonResponsable;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelIdentifiant;

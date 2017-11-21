@@ -54,8 +54,8 @@ public class Personne {
         return getPosition();
     }
 
-    public void modifPos(int i, String nom, String prenom, String role) {
-
+    public String modifPos(int i, String categorie) {
+    return"";
     }
 
     public String getPosition() {
