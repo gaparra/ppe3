@@ -67,7 +67,7 @@ public class Personne {
     }
 
     public String getRole() {
-        return this.getClass().getName();
+        return role;
     }
 
     public void setRole(String role) {

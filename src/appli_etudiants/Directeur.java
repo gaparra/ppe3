@@ -30,22 +30,32 @@ public class Directeur extends Employe {
 
     }
 
-    public void promouvoir(int i) {
+    public String promouvoir(int i) {
         try {
             Connection maConnexion = ConnexionBDD.getInstance();
             //requete
             Statement requete = maConnexion.createStatement();
 
-            requete.executeUpdate("update utilisateurs set role ='responsable'where id_utilisateur=" + i);
+            requete.executeUpdate("update utilisateurs set role ='responsable' where id_utilisateur=" + i);
 
         } catch (SQLException ex) {
             Logger.getLogger(Responsable.class.getName()).log(Level.SEVERE, null, ex);
         }
-//         return("select nom,prenom,categorie from Utilisateurs where id_utilisateur="+i);
+        return ("select nom,prenom,role from Utilisateurs where id_utilisateur=" + i);
     }
 
-    public void retrograder(int i) {
+    public String retrograder(int i) {
+        try {
+            Connection maConnexion = ConnexionBDD.getInstance();
+            //requete
+            Statement requete = maConnexion.createStatement();
 
+            requete.executeUpdate("update utilisateurs set role ='employe' where id_utilisateur=" + i);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Responsable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ("select nom,prenom,role from Utilisateurs where id_utilisateur=" + i);
     }
 
 }

@@ -54,13 +54,14 @@ public class InterfaceGraphique extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanelResponsable = new javax.swing.JPanel();
         jTextPosRes = new javax.swing.JTextField();
-        jButtonPosDir1 = new javax.swing.JButton();
+        jButtonPosRes = new javax.swing.JButton();
         jButtonModifRole = new javax.swing.JButton();
         jPanelDirecteur = new javax.swing.JPanel();
         jButtonPosDir = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
+        jButtonInfoDir = new javax.swing.JButton();
         jPanelEmploye = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jTextPosEmp = new javax.swing.JTextField();
@@ -93,10 +94,10 @@ public class InterfaceGraphique extends javax.swing.JFrame {
             }
         });
 
-        jButtonPosDir1.setText("Voir pos");
-        jButtonPosDir1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPosRes.setText("Voir pos");
+        jButtonPosRes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPosDir1ActionPerformed(evt);
+                jButtonPosResActionPerformed(evt);
             }
         });
 
@@ -116,7 +117,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                 .add(jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jButtonModifRole)
                     .add(jPanelResponsableLayout.createSequentialGroup()
-                        .add(jButtonPosDir1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jButtonPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .add(121, 121, 121)
                         .add(jTextPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(268, Short.MAX_VALUE))
@@ -127,7 +128,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
                 .add(102, 102, 102)
                 .add(jPanelResponsableLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jTextPosRes, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButtonPosDir1))
+                    .add(jButtonPosRes))
                 .add(95, 95, 95)
                 .add(jButtonModifRole)
                 .addContainerGap(300, Short.MAX_VALUE))
@@ -159,33 +160,51 @@ public class InterfaceGraphique extends javax.swing.JFrame {
             }
         });
 
+        jButtonInfoDir.setText("Mes Infos");
+        jButtonInfoDir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInfoDirActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanelDirecteurLayout = new org.jdesktop.layout.GroupLayout(jPanelDirecteur);
         jPanelDirecteur.setLayout(jPanelDirecteurLayout);
         jPanelDirecteurLayout.setHorizontalGroup(
             jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanelDirecteurLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jButton2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jButtonPosDir, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(287, 287, 287)
                 .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(137, Short.MAX_VALUE))
+                    .add(jPanelDirecteurLayout.createSequentialGroup()
+                        .add(47, 47, 47)
+                        .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jButton2)
+                            .add(jButtonPosDir, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 101, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(287, 287, 287)
+                        .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 70, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(jPanelDirecteurLayout.createSequentialGroup()
+                        .add(198, 198, 198)
+                        .add(jButtonInfoDir)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         jPanelDirecteurLayout.setVerticalGroup(
             jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanelDirecteurLayout.createSequentialGroup()
-                .add(72, 72, 72)
-                .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButtonPosDir)
-                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(26, 26, 26)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelDirecteurLayout.createSequentialGroup()
+                .add(50, 50, 50)
+                .add(jButtonInfoDir)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 346, Short.MAX_VALUE)
+                .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanelDirecteurLayout.createSequentialGroup()
+                        .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(28, 28, 28))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanelDirecteurLayout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 7, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(jButtonPosDir)
+                        .add(18, 18, 18)))
                 .add(jPanelDirecteurLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jButton2)
                     .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(399, Short.MAX_VALUE))
+                .add(53, 53, 53))
         );
 
         jButton4.setText("Modifier tel pro ");
@@ -356,18 +375,16 @@ public class InterfaceGraphique extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.fenConnexion = new Connexion(this, true);
-//        this.fenConnexion.setVisible(true);
         jPanelBase.setVisible(true);
         jPanelDirecteur.setVisible(false);
         jPanelResponsable.setVisible(false);
         jPanelEmploye.setVisible(false);
-
+        this.fenConnexion.setVisible(true);
 
     }//GEN-LAST:event_formWindowOpened
 
     private void jButtonPosDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosDirActionPerformed
-
-        jTextField1.setText(gens.getRole());
+        jTextField1.setText(gens.getPosition());
     }//GEN-LAST:event_jButtonPosDirActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -389,22 +406,26 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextPosResActionPerformed
 
     private void jButtonPosEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosEmpActionPerformed
-        jTextPosEmp.setText(gens.getRole());
+        jTextPosEmp.setText(gens.getPosition());
 
     }//GEN-LAST:event_jButtonPosEmpActionPerformed
 
-    private void jButtonPosDir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosDir1ActionPerformed
-        jTextPosRes.setText(gens.getRole());
-    }//GEN-LAST:event_jButtonPosDir1ActionPerformed
+    private void jButtonPosResActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPosResActionPerformed
+        jTextPosRes.setText(gens.getPosition());
+    }//GEN-LAST:event_jButtonPosResActionPerformed
 
     private void jButtonModifRoleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModifRoleActionPerformed
 
         fenModifRole = new ModifRole(this, true);
         fenModifRole.AjoutInfo(gens);
         this.fenModifRole.setVisible(true);
-        
+
 
     }//GEN-LAST:event_jButtonModifRoleActionPerformed
+
+    private void jButtonInfoDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoDirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonInfoDirActionPerformed
     public void connecte(String nom, String prenom, String role) {
         //maj de l'etat de la connexion
         this.connecte = true;
@@ -484,10 +505,11 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonInfoDir;
     private javax.swing.JButton jButtonModifRole;
     private javax.swing.JButton jButtonPosDir;
-    private javax.swing.JButton jButtonPosDir1;
     private javax.swing.JButton jButtonPosEmp;
+    private javax.swing.JButton jButtonPosRes;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanelBase;
     private javax.swing.JPanel jPanelDirecteur;
