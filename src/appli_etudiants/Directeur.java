@@ -21,18 +21,13 @@ public class Directeur extends Employe {
 
     public Directeur(Integer id, String nom, String prenom, String courriel, String embauche, String annee_naissance, String adresse, Integer cp, String ville, String position, String role, String pro, String perso) {
         super(id, nom, prenom, courriel, embauche, annee_naissance, adresse, cp, ville, position, role, pro, perso);
-        this.poste="Directeur";
+        this.poste = "Directeur";
     }
-
-
-
-
 
 //    public void creer(Integer id, String nom, String prenom, String courriel, String embauche, String adresse, String ville, String cp, String annee_naissance, String position, String role, String pro, String perso) {
 //        Employe nouveau = new Employe(id, nom, prenom, courriel, embauche, adresse, ville, cp, annee_naissance, position, role, pro, perso);
 //
 //    }
-
     public String promouvoir(int i) {
         try {
             Connection maConnexion = ConnexionBDD.getInstance();

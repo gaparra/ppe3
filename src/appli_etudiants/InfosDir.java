@@ -5,6 +5,13 @@
  */
 package appli_etudiants;
 
+import com.mysql.jdbc.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author g.parra
@@ -17,8 +24,6 @@ public class InfosDir extends javax.swing.JDialog {
     /**
      * Creates new form InfosDir
      */
- 
-
     public InfosDir(java.awt.Frame parent, boolean modal, Personne gens) {
         super(parent, modal);
         initComponents();
@@ -29,8 +34,8 @@ public class InfosDir extends javax.swing.JDialog {
         this.setModal(true);
         //on stocke dans this.fenetre la référence vers la fenetre parente
         this.fenetre = (InterfaceGraphique) parent;
-        this.gens=gens;
-        
+        this.gens = gens;
+
         jTextFieldTelPerso.setText(gens.getPerso());
         jTextFieldTelPro.setText(gens.getPro());
         jLabelNom.setText(gens.getNom());
@@ -152,6 +157,11 @@ public class InfosDir extends javax.swing.JDialog {
 
         jButton6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jButton6.setText("Valider modification");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -277,6 +287,30 @@ public class InfosDir extends javax.swing.JDialog {
 
 
     }//GEN-LAST:event_jTextFieldCPActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+        String cp = jTextFieldCP.getText();
+        String rue = jTextFieldRue.getText();
+        String ville = jTextFieldVille.getText();
+        String perso = jTextFieldTelPerso.getText();
+        String pro = jTextFieldTelPro.getText();
+
+        Integer id = gens.getId();
+        try {
+            Connection maConnexion = ConnexionBDD.getInstance();
+            //requete
+            Statement requete = maConnexion.createStatement();
+            System.out.println("update utilisateurs set tel_personnel=" + perso + " and tel_professionnel = " + pro + " where id_utilisateur=" + id);
+            requete.executeUpdate("update utilisateurs set tel_personnel=" + perso + " , tel_professionnel = " + pro + " where id_utilisateur=" + id);
+            System.out.println("update adresse set code_postal=" + cp + " , rue = " + rue + " , ville =" + ville + " where id_utilisateur=" + id);
+            requete.executeUpdate("update adresse set code_postal=" + cp + " , rue = '" + rue + "' , ville ='" + ville + "' where id_utilisateur=" + id);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ModifRole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
