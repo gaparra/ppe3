@@ -22,11 +22,14 @@ public class Responsable extends Employe {
 
     private String poste;
 
-    public Responsable(Integer id, String nom, String prenom, String courriel, String embauche, String adresse, String annee_naissance, String position, String role) {
-        super(id, nom, prenom, courriel, embauche, adresse, annee_naissance, position, role);
-        this.poste = "Responsable";
-
+    public Responsable(Integer id, String nom, String prenom, String courriel, String embauche, String annee_naissance, String adresse, Integer cp, String ville, String position, String role, String pro, String perso) {
+        super(id, nom, prenom, courriel, embauche, annee_naissance, adresse, cp, ville, position, role, pro, perso);
+        this.poste="Responsable";
     }
+
+ 
+
+
 
     @Override
     public String modifPos(int i, String categorie) {

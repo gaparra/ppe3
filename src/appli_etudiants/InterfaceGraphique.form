@@ -103,24 +103,24 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanelDirecteur" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="411" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="390" max="32767" attributes="0"/>
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanelResponsable" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="411" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="390" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanelEmploye" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="458" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="437" max="32767" attributes="0"/>
               </Group>
           </Group>
           <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanelBase" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>

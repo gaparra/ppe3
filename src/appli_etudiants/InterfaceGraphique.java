@@ -24,6 +24,7 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     private Connexion fenConnexion;
     private Deconnexion fenDeconnexion;
     private ModifRole fenModifRole;
+    private InfosDir fenInfoDir;
 
     /**
      * constructeur : Creates new form InterfaceGraphique
@@ -322,19 +323,19 @@ public class InterfaceGraphique extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(jPanelDirecteur, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(0, 411, Short.MAX_VALUE))
+                .add(0, 390, Short.MAX_VALUE))
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(layout.createSequentialGroup()
                     .add(jPanelResponsable, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(0, 411, Short.MAX_VALUE)))
+                    .add(0, 390, Short.MAX_VALUE)))
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(layout.createSequentialGroup()
                     .add(jPanelEmploye, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(0, 458, Short.MAX_VALUE)))
+                    .add(0, 437, Short.MAX_VALUE)))
             .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                 .add(layout.createSequentialGroup()
                     .add(jPanelBase, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(0, 21, Short.MAX_VALUE)))
+                    .add(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -424,7 +425,9 @@ public class InterfaceGraphique extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonModifRoleActionPerformed
 
     private void jButtonInfoDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoDirActionPerformed
-        // TODO add your handling code here:
+
+        fenInfoDir = new InfosDir(this, true, gens);
+        this.fenInfoDir.setVisible(true);
     }//GEN-LAST:event_jButtonInfoDirActionPerformed
     public void connecte(String nom, String prenom, String role) {
         //maj de l'etat de la connexion

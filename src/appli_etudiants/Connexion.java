@@ -225,19 +225,19 @@ public class Connexion extends javax.swing.JDialog {
                     ResultSet lignesRetourneesAdresse = requete.executeQuery("select * from adresse where id_utilisateur='" + id + "'");
 
                     if (lignesRetourneesAdresse.next()) {
-                        String rue = lignesRetourneesAdresse.getString("rue");
-                        String cp = lignesRetourneesAdresse.getString("code_postal");
+                        String adresse = lignesRetourneesAdresse.getString("rue");
+                        Integer cp = lignesRetourneesAdresse.getInt("code_postal");
                         String ville = lignesRetourneesAdresse.getString("ville");
-                        String adresse = rue + cp + ville;
 
                         if (role.equals("responsable")) {
-                            Personne zuk = new Responsable(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                            Personne zuk = new Responsable(id, nom, prenom, mail, embauche, naissance, adresse, cp, ville, categorie, role, pro, perso);
                             this.fenetre.gens = zuk;
+                            
                         } else if (role.equals("directeur")) {
-                            Personne zuk = new Directeur(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                            Personne zuk = new Directeur(id, nom, prenom, mail, embauche, naissance, adresse, cp, ville, categorie, role, pro, perso);
                             this.fenetre.gens = zuk;
                         } else {
-                            Personne zuk = new Employe(id, nom, prenom, mail, embauche, adresse, naissance, categorie, role);
+                            Personne zuk = new Employe(id, nom, prenom, mail, embauche, naissance, adresse, cp, ville, categorie, role, pro, perso);
                             this.fenetre.gens = zuk;
                         }
 

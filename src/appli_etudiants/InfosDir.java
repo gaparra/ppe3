@@ -9,13 +9,37 @@ package appli_etudiants;
  *
  * @author g.parra
  */
-public class InfosDir extends javax.swing.JFrame {
+public class InfosDir extends javax.swing.JDialog {
+
+    private InterfaceGraphique fenetre;
+    private Personne gens;
 
     /**
      * Creates new form InfosDir
      */
-    public InfosDir() {
+ 
+
+    public InfosDir(java.awt.Frame parent, boolean modal, Personne gens) {
+        super(parent, modal);
         initComponents();
+        //positionnement au milieu de la fenetre parente
+        this.setLocationRelativeTo(parent);
+        //modal==true signifie que l'on ne peut pas revenir 
+        //sur la precedente fenêtre dans fermer connexion
+        this.setModal(true);
+        //on stocke dans this.fenetre la référence vers la fenetre parente
+        this.fenetre = (InterfaceGraphique) parent;
+        this.gens=gens;
+        
+        jTextFieldTelPerso.setText(gens.getPerso());
+        jTextFieldTelPro.setText(gens.getPro());
+        jLabelNom.setText(gens.getNom());
+        jLabelPrenom.setText(gens.getPrenom());
+        jLabelPosition.setText(gens.getPosition());
+        jTextFieldCP.setText(gens.getCp().toString());
+        jTextFieldRue.setText(gens.getAdresse());
+        jTextFieldVille.setText(gens.getVille());
+
     }
 
     /**
@@ -46,24 +70,39 @@ public class InfosDir extends javax.swing.JFrame {
         jButtonTelPro = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabelPosition = new javax.swing.JLabel();
+        jLabelNom = new javax.swing.JLabel();
+        jLabelPrenom = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Nom");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Prenom");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Code Postal");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Ville");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Rue");
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Tel Perso");
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Tel Pro");
 
         jTextFieldCP.setEditable(false);
+        jTextFieldCP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCPActionPerformed(evt);
+            }
+        });
 
         jButtonCP.setText("Modifier");
         jButtonCP.addActionListener(new java.awt.event.ActionListener() {
@@ -75,19 +114,40 @@ public class InfosDir extends javax.swing.JFrame {
         jTextFieldRue.setEditable(false);
 
         jButtonRue.setText("Modifier");
+        jButtonRue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRueActionPerformed(evt);
+            }
+        });
 
         jTextFieldVille.setEditable(false);
 
         jButtonTelPerso.setText("Modifier");
+        jButtonTelPerso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTelPersoActionPerformed(evt);
+            }
+        });
 
         jTextFieldTelPerso.setEditable(false);
 
         jButtonVille.setText("Modifier");
+        jButtonVille.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVilleActionPerformed(evt);
+            }
+        });
 
         jTextFieldTelPro.setEditable(false);
 
         jButtonTelPro.setText("Modifier");
+        jButtonTelPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTelProActionPerformed(evt);
+            }
+        });
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Position");
 
         jButton6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
@@ -97,55 +157,69 @@ public class InfosDir extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldTelPerso)
-                            .addComponent(jTextFieldTelPro)
-                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldCP, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextFieldVille)
-                                    .addComponent(jTextFieldRue)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(35, 35, 35)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonTelPerso)
-                    .addComponent(jButtonVille)
-                    .addComponent(jButtonTelPro)
-                    .addComponent(jButtonCP)
-                    .addComponent(jButtonRue))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldTelPro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCP, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldRue, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldVille, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldTelPerso, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonTelPerso)
+                            .addComponent(jButtonVille)
+                            .addComponent(jButtonTelPro)
+                            .addComponent(jButtonCP)
+                            .addComponent(jButtonRue)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelNom, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(69, 69, 69)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabelNom, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabelPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldCP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,7 +244,7 @@ public class InfosDir extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jTextFieldTelPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonTelPro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -179,8 +253,30 @@ public class InfosDir extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCPActionPerformed
-jTextFieldCP.setEditable(true);
+        jTextFieldCP.setEditable(true);
     }//GEN-LAST:event_jButtonCPActionPerformed
+
+    private void jButtonRueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRueActionPerformed
+        jTextFieldRue.setEditable(true);
+    }//GEN-LAST:event_jButtonRueActionPerformed
+
+    private void jButtonVilleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVilleActionPerformed
+        jTextFieldVille.setEditable(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVilleActionPerformed
+
+    private void jButtonTelPersoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelPersoActionPerformed
+        jTextFieldTelPerso.setEditable(true);
+    }//GEN-LAST:event_jButtonTelPersoActionPerformed
+
+    private void jButtonTelProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTelProActionPerformed
+        jTextFieldTelPro.setEditable(true);
+    }//GEN-LAST:event_jButtonTelProActionPerformed
+
+    private void jTextFieldCPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPActionPerformed
+
+
+    }//GEN-LAST:event_jTextFieldCPActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,7 +308,14 @@ jTextFieldCP.setEditable(true);
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InfosDir().setVisible(true);
+                InfosDir dialog = new InfosDir(new javax.swing.JFrame(), true, null);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -232,6 +335,9 @@ jTextFieldCP.setEditable(true);
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelNom;
+    private javax.swing.JLabel jLabelPosition;
+    private javax.swing.JLabel jLabelPrenom;
     private javax.swing.JTextField jTextFieldCP;
     private javax.swing.JTextField jTextFieldRue;
     private javax.swing.JTextField jTextFieldTelPerso;
